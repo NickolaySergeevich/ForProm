@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Чат</title>
+</head>
+<body>
+{% include 'menu.html' %}
+<hr>
+
+<form action="/chat/" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    <input type="submit" value="Отправить сообщение">
+</form>
+<hr>
+
+{% for item in chat_data %}
+    <p>{{ item.date }} {{ item.username }}: {{ item.message }}</p>
+{% endfor %}
+</body>
+</html>
